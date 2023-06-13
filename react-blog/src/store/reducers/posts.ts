@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { POSTS_ACTION_TYPES } from "../../constants/ACTION_TYPES";
+import { POSTS_ACTION_TYPES } from "../../constants/ActionTypes";
 
 const initialState = {
   posts: [],

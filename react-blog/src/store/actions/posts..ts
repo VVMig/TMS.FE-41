@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { postsService } from "../../services";
-import { POSTS_ACTION_TYPES } from "../../constants/ACTION_TYPES";
+import { POSTS_ACTION_TYPES } from "../../constants/ActionTypes";
 import { AnyAction } from "redux";
 
 const sleep = (time: number) =>
