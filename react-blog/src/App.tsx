@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchPosts } from "./store/actions/posts";
 import "./style/style.css";
-import { AppDispatch } from "./store";
+import { useAppDispatch } from "./useDispatch";
 
 const App = () => {
   const {
@@ -12,10 +12,10 @@ const App = () => {
     error,
   } = useSelector((state: any) => state.posts);
 
-  const dispatch = useDispatch() as AppDispatch;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts(posts.map((posts:any) => posts.userID)));
+    dispatch(fetchPosts());
   }, []);
 
   if (error) {
