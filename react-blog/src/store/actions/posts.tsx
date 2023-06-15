@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk";
 import { postsService } from "../../services";
 import { AnyAction } from "redux";
-import { addPosts, setLoadingAction, setError } from "../reducers/posts";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 const sleep = (time: number) =>
   new Promise((res) => {
     setTimeout(() => {
@@ -9,21 +9,12 @@ const sleep = (time: number) =>
     }, time);
   });
 
-export const fetchPosts = (): ThunkAction<void, any, null, AnyAction> => {
-  return async (Dispatch) => {
-    try {
+export const fetchPosts = createAsyncThunk(
+  'user/fetchPosts',
+  async (userID: number) => {
       const { data } = await postsService.getAll();
-
-      Dispatch(setLoadingAction(true));
-
       await sleep(3000);
-
-      Dispatch(addPosts(data.results));
-
-    } catch (error) {
-       Dispatch(setError());
-    } finally {
-      Dispatch(setLoadingAction(false));
-    }
-  };
-};
+      console.log(data.results)
+    return data.results;
+  }
+);

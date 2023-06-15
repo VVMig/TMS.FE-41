@@ -3,6 +3,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./store/actions/posts";
 import "./style/style.css";
+import { AppDispatch } from "./store";
 
 const App = () => {
   const {
@@ -11,10 +12,10 @@ const App = () => {
     error,
   } = useSelector((state: any) => state.posts);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as AppDispatch;
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts(posts.map((posts:any) => posts.userID)));
   }, []);
 
   if (error) {
@@ -56,7 +57,7 @@ const App = () => {
       <div>
         {isLoading
           ? "Loading..."
-          : posts.map((post: any) => <p>{post.title}</p>)}
+          : posts.map((post: any) => <p>{String(post.title)}</p>)}
       </div>
     </div>
   );

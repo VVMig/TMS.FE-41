@@ -1,5 +1,5 @@
-import { AnyAction } from "redux";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { fetchPosts } from "../actions/posts";
 
 const initialState = {
   posts: [],
@@ -10,18 +10,20 @@ const initialState = {
 const postsReducer = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    addPosts: (state, action:AnyAction) => {
-      state.posts = state.posts.concat(action.payload)
-    },
-    setLoadingAction: (state, action:PayloadAction<boolean>) => {
-      state.loading = action.payload
-    },
-     setError: (state, action:AnyAction) => {
-       state.error = action.payload  
-     },
+  reducers: {},
+  extraReducers(builder){ 
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
+      state.posts = state.posts.concat(action.payload);
+      state.loading = false;
+    });
+    builder.addCase(fetchPosts.pending, (state)=> {
+      state.loading = true;
+    });
+    builder.addCase(fetchPosts.rejected, (state) => {
+      state.error = 'error';
+    });
   }
 })
 
-export const { setLoadingAction, addPosts, setError} = postsReducer.actions;
+//export const { setLoadingAction, addPosts, setError} = postsReducer.actions;
 export default postsReducer.reducer ;
