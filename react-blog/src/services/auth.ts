@@ -1,14 +1,31 @@
-import axios from "axios";
+import { ICredentials, Login } from "./interfaces";
+import { api } from "./configs/http";
 
 class AuthService {
-  register(body: { username: string; password: string; email: string }) {
-    return axios.post("https://studapi.teachmeskills.by/auth/users/", body);
+  register(body: ICredentials) {
+    return api.post("/auth/users/", body);
   }
 
   verifyEmail(body: { uid: string; token: string }) {
-    return axios.post(
-      "https://studapi.teachmeskills.by/auth/users/activation/",
+    return api.post("/auth/users/activation/", body);
+  }
+
+  getAccessRefreshTokens(body: Login) {
+    return api.post<{ access: string; refresh: string }>(
+      "/auth/jwt/create/",
       body
+    );
+  }
+
+  refreshAccessToken(refresh: string) {
+    return api.post<{ access: string }>("/auth/jwt/refresh/", {
+      refresh,
+    });
+  }
+
+  getCurrentUser() {
+    return api.get<{ id: number; email: string; username: string }>(
+      "/auth/users/me/"
     );
   }
 }

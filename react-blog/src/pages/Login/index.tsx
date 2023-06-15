@@ -1,37 +1,54 @@
 import { Button, CircularProgress } from "@mui/material";
-import { Form, Formik } from "formik";
+import { Formik, Form } from "formik";
+import { useEffect, useState } from "react";
 import { DefaultTextField } from "../../components";
-import * as Yup from "yup";
 import { authService } from "../../services/auth";
-import { useState } from "react";
+import * as Yup from "yup";
+import { LOCAL_STORAGE_KEYS } from "../../constants/LocalStorageKeys";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../store/actions/user";
+import { useNavigate } from "react-router-dom";
+import { Routes } from "../../constants/Routes";
 
-const RegisterSchema = Yup.object().shape({
-  username: Yup.string().min(4, "Too shoort name").required("Required"),
+const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string()
-    .min(8, "Too short password. At least 8 characters")
-    .required("Required"),
+  password: Yup.string().required("Required"),
 });
 
 const initialValues = {
-  username: "",
   email: "",
   password: "",
 };
 
 type FormikValues = typeof initialValues;
 
-const Register = () => {
-  const [user, setUser] = useState<any>(null);
+const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { id } = useSelector((store: any) => store.user);
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const onSubmit = async (values: FormikValues) => {
     try {
       setIsLoading(true);
 
-      const { data: user } = await authService.register(values);
+      const { data: accessRefreshTokens } =
+        await authService.getAccessRefreshTokens(values);
 
-      setUser(user);
+      localStorage.setItem(
+        LOCAL_STORAGE_KEYS.ACCESS_TOKEN,
+        accessRefreshTokens.access
+      );
+      localStorage.setItem(
+        LOCAL_STORAGE_KEYS.REFRESH_TOKEN,
+        accessRefreshTokens.refresh
+      );
+
+      const { data: user } = await authService.getCurrentUser();
+
+      dispatch(setUser(user));
     } catch (error) {
       console.dir(error);
     } finally {
@@ -39,16 +56,19 @@ const Register = () => {
     }
   };
 
-  if (user) {
-    return <h1>Dear {user.username}, pls verify your email</h1>;
-  }
+  useEffect(() => {
+    if (id) {
+      return navigate(Routes.Home);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return (
     <div>
       <Formik
         initialValues={initialValues}
-        validationSchema={RegisterSchema}
         onSubmit={onSubmit}
+        validationSchema={LoginSchema}
       >
         <Form
           style={{
@@ -58,12 +78,6 @@ const Register = () => {
             maxWidth: 400,
           }}
         >
-          <DefaultTextField
-            label="Username"
-            variant="outlined"
-            placeholder="Username"
-            name="username"
-          />
           <DefaultTextField label="Email" variant="outlined" name="email" />
           <DefaultTextField
             label="Password"
@@ -78,7 +92,7 @@ const Register = () => {
               isLoading ? <CircularProgress color="secondary" /> : undefined
             }
           >
-            Register
+            Login
           </Button>
         </Form>
       </Formik>
@@ -86,4 +100,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

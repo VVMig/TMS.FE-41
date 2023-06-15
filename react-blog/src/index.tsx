@@ -9,6 +9,7 @@ import { Routes } from "./constants/Routes";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Verify from "./pages/Verify";
+import Login from "./pages/Login";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: Routes.Register,
         element: <Register />,
+      },
+      {
+        path: Routes.Login,
+        element: <Login />,
       },
       {
         path: Routes.Verify,

@@ -1,8 +1,8 @@
-import axios from "axios";
+import { api } from "./configs/http";
 
 class PostsService {
   getAll() {
-    return axios.get("https://studapi.teachmeskills.by/blog/posts/?limit=100");
+    return api.get("/blog/posts/");
   }
 }
 
