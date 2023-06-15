@@ -1,22 +1,27 @@
 import { AnyAction } from "redux";
-import { POSTS_ACTION_TYPES } from "../../constants/ACTION_TYPES";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   posts: [],
   loading: false,
+  error:""
 };
 
-const postsReducer = (state = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case POSTS_ACTION_TYPES.ADD_POSTS:
-      return { ...state, posts: state.posts.concat(action.payload) };
-    case POSTS_ACTION_TYPES.SET_LOADING:
-      return { ...state, loading: action.payload };
-    case POSTS_ACTION_TYPES.SET_ERROR:
-      return { ...state, error: action.payload };
-    default:
-      return state;
+const postsReducer = createSlice({
+  name: 'posts',
+  initialState,
+  reducers: {
+    addPosts: (state, action:AnyAction) => {
+      state.posts = state.posts.concat(action.payload)
+    },
+    setLoadingAction: (state, action:PayloadAction<boolean>) => {
+      state.loading = action.payload
+    },
+     setError: (state, action:AnyAction) => {
+       state.error = action.payload  
+     },
   }
-};
+})
 
-export { postsReducer };
+export const { setLoadingAction, addPosts, setError} = postsReducer.actions;
+export default postsReducer.reducer ;

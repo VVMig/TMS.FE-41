@@ -1,0 +1,20 @@
+.header {
+  padding: 0 40px;
+  display: flex;
+  background-color: rgb(48, 48, 204);
+  justify-content: space-between;
+}
+.header__form {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.header__searchBTN {
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+}
+.header__h2 {
+  color: aliceblue;
+}/*# sourceMappingURL=style.css.map */
