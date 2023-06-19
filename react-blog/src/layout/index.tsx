@@ -5,6 +5,7 @@ import { authService } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
+import style from "./style/index.module.css";
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
@@ -30,8 +31,12 @@ export const Root = () => {
 
   return (
     <>
-      <header>
+      <header className={style.header}>
         <NavPanel />
+        <form className={style.header__search}>
+          <input class="header__search-input" id="inputSearch" type="text" name="text" class="Search..."
+            placeholder="Search"></input>
+        </form>
         <h1>{user && user?.username}</h1>
       </header>
       <div>

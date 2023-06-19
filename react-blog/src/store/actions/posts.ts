@@ -37,4 +37,4 @@ export const fetchPosts = (): ThunkAction<void, any, null, AnyAction> => {
       dispatch(setLoading(false));
     }
   };
-};
+}
