@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../store/actions/posts.";
+import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
+import { fetchPost } from "../../store/actions/post";
 
 const Home = () => {
   const {
@@ -38,7 +39,8 @@ const Home = () => {
       ) : (
         <div>
           {posts.map((post: any) => (
-            <Post
+            <Post 
+              id={post.id}
               key={post.id}
               title={post.title}
               text={post.text}
