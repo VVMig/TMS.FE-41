@@ -8,7 +8,7 @@ import { fetchTasks } from "./store/tasksReducer/actions";
 function App() {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as AppDispatch;
 
   useEffect(() => {
     dispatch(fetchTasks());
