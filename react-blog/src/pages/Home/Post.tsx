@@ -9,14 +9,21 @@ import {
 } from "@mui/material";
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../store";
+import { fetchPost } from "../../store/actions/post";
+import { useEffect } from "react";
+import { number } from "yup";
 interface IProps {
+  id: number;
   title: string;
   src: string;
   text: string;
 }
 
-export const Post = ({ title, src, text }: IProps) => {
+export const Post = ({id, title, src, text,}: IProps) => {
+  const dispatch = useDispatch() as AppDispatch;
   return (
     <Card sx={{ maxWidth: 345, marginTop: 12 }}>
       <CardHeader
@@ -26,9 +33,11 @@ export const Post = ({ title, src, text }: IProps) => {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
+          <Link to={'/post'}>
+          <IconButton aria-label="settings" onClick={()=>{dispatch(fetchPost(id))}}>
             <MoreVertIcon />
           </IconButton>
+          </Link>
         }
         title={title}
       />

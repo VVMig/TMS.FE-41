@@ -2,7 +2,8 @@ import { api } from "./configs/http";
 
 class PostsService {
   getAll() {
-    return api.get("/blog/posts/");
+    const data = api.get("/blog/posts/");
+    return data
   }
 }
 

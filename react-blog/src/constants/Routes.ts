@@ -3,5 +3,5 @@ export enum Routes {
   Register = "/register",
   Login = "/login",
   Verify = "/verify/:uid/:token",
-  Post = "/post/:id",
+  Post = "/post/",
 }
