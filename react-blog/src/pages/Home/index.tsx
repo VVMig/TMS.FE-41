@@ -4,6 +4,8 @@ import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
 import { useAppDispatch } from "../../hooks/useAppDistach";
+import { Link } from "react-router-dom";
+import { Routes } from "../../constants/Routes";
 
 const Home = () => {
   const {
@@ -38,12 +40,14 @@ const Home = () => {
       ) : (
         <div>
           {posts.map((post: any) => (
-            <Post
-              key={post.id}
-              title={post.title}
-              text={post.text}
-              src={post.image}
-            />
+            <Link to={Routes.Post}>
+              <Post
+                key={post.id}
+                title={post.title}
+                text={post.text}
+                src={post.image}
+              />
+            </Link>
           ))}
         </div>
       )}
