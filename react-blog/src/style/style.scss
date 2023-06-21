@@ -1,0 +1,22 @@
+.header{
+    padding: 0 40px;
+display: flex;
+background-color: rgb(48, 48, 204);
+justify-content: space-between;
+
+&__form{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+&__searchBTN{
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+}
+
+&__h2{
+    color: aliceblue;
+}
+}
