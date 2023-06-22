@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../store/actions/posts.";
+import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
+import { Routes } from "../../constants/Routes";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const {
@@ -38,12 +40,14 @@ const Home = () => {
       ) : (
         <div>
           {posts.map((post: any) => (
-            <Post
-              key={post.id}
-              title={post.title}
-              text={post.text}
-              src={post.image}
-            />
+            <Link to={Routes.Post.replace(":id", post.id)}>
+              <Post
+                key={post.id}
+                title={post.title}
+                text={post.text}
+                src={post.image}
+              />
+            </Link>
           ))}
         </div>
       )}
