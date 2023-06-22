@@ -4,7 +4,7 @@ class PostsService {
   getAll() {
     return api.get("/blog/posts/", {
       params: {
-        limit: 20,
+        limit: 12,
       },
       headers: {
         Authorization: null,
