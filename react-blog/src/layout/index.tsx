@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
 import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
@@ -35,6 +36,7 @@ export const Root = () => {
       <div>
         <Outlet />
       </div>
+      <Footer />
     </>
   );
 };
