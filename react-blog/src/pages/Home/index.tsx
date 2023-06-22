@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../store/actions/posts.";
+import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
 import { Routes } from "../../constants/Routes";
@@ -40,7 +40,7 @@ const Home = () => {
       ) : (
         <div>
           {posts.map((post: any) => (
-            <Link to={Routes.Post.replace(':id', post.id)}>
+            <Link to={Routes.Post.replace(":id", post.id)}>
               <Post
                 key={post.id}
                 title={post.title}
