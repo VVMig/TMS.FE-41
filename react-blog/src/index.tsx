@@ -12,6 +12,8 @@ import Verify from "./pages/Verify";
 import Login from "./pages/Login";
 import Post from "./pages/Post";
 
+// sass installation: npm install node-sass
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

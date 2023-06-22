@@ -1,11 +1,14 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunk from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 import { postsReducer } from "./reducers/posts";
 import { userReducer } from "./reducers/user";
 
-export const rootReducer = combineReducers({
-  posts: postsReducer,
-  user: userReducer,
-});
+export type RootState = ReturnType<typeof store.getState>;
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export type AppDispatch = typeof store.dispatch;
+
+export const store = configureStore({
+  reducer: {
+    posts: postsReducer,
+    user: userReducer,
+  },
+});

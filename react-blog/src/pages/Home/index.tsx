@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
-import { Routes } from "../../constants/Routes";
+import { fetchPosts } from "../../store/actions/posts";
 import { Link } from "react-router-dom";
+import { Routes } from "../../constants/Routes";
 
 const Home = () => {
   const {

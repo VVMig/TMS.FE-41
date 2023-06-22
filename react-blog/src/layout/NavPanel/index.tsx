@@ -2,10 +2,10 @@ import { Box, Button, Drawer } from "@mui/material";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
-import { restoreUser } from "../store/actions/user";
 import { Link } from "react-router-dom";
-import { Routes } from "../constants/Routes";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import { ThemeSwitcher } from "../ThemeSwitcher";
+import { restoreUser } from "../../store/actions/user";
+import { Routes } from "../../constants/Routes";
 
 export const NavPanel = () => {
   const user = useSelector((store: any) => store.user);
@@ -17,7 +17,11 @@ export const NavPanel = () => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>
-        <MenuIcon />
+        <MenuIcon
+          sx={{
+            color: "#ffffff",
+          }}
+        />
       </Button>
       <Drawer anchor="left" open={isOpen} onClose={() => setIsOpen(false)}>
         <Box

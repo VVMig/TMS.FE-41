@@ -6,6 +6,9 @@ class PostsService {
       params: {
         limit: 20,
       },
+      headers: {
+        Authorization: null,
+      },
     });
   }
 }
