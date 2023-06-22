@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import Login from "./pages/Login";
-import PostPage  from "./pages/Post";
+import PostPage from "./pages/Post/SinglePost";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

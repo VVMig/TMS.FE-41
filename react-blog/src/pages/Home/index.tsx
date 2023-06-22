@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
-import { fetchPost } from "../../store/actions/post";
 
 const Home = () => {
   const {
@@ -38,6 +37,7 @@ const Home = () => {
         <CircularProgress />
       ) : (
         <div>
+          <header/>
           {posts.map((post: any) => (
             <Post 
               id={post.id}

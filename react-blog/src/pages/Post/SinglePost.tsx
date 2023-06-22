@@ -8,17 +8,27 @@ import {
     Typography,
   } from "@mui/material";
   import { red } from "@mui/material/colors";
-  import { Link } from "react-router-dom";
+  import { Link, useParams } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import axios from "axios";
   
-  interface IProps {
-    title: string;
-    src: string;
-    text: string;
-  }
+   const PostPage = () => {
+
+    const [post, setPost] = useState({
+      title: "",
+      image: "",
+      text: "",
+      id: 0,
+    });
+
+  const params = useParams();
   
-  export const SinglePost = ({ title, src, text }: IProps) => {
-    return (
+  useEffect(() => {
+    axios.get(`https://studapi.teachmeskills.by/blog/posts/${params.id}/`).then((data)=> setPost(data.data));
+  },[params.id]);
+
+  return (
       <Card sx={{ maxWidth: 2000, marginTop: 5 }}>
         <CardHeader
           avatar={
@@ -33,15 +43,15 @@ import { ArrowBack } from "@mui/icons-material";
             </IconButton>
             </Link>
           }
-          title={title}
+          title={post.title}
         />
-        <CardMedia component="img" height="700" image={src} alt="Paella dish" />
+        <CardMedia component="img" height="700" image={post.image} alt="Paella dish" />
         <CardContent>
           <Typography variant="body1" color="text.secondary">
-            {text}
+            {post.text}
           </Typography>
         </CardContent>
       </Card>
     );
   };
-  
+  export default PostPage;
