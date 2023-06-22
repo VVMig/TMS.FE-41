@@ -1,17 +1,17 @@
-.postsWrapper{
-    display: grid;
-    grid-template-columns: 70% 30%;
-    height: 100%;
+.postsWrapper {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  height: 100%;
 }
-.leftColumn{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: stretch;
-    height: 100%;
+.leftColumn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: stretch;
+  height: 100%;
 }
-.rightColumn{
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    height: 100%;
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
 }

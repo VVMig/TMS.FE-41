@@ -5,6 +5,7 @@ const initialState = {
   posts: [],
   loading: false,
   error: "",
+  count: null,
 };
 
 export const postSlice = createSlice({
@@ -13,7 +14,8 @@ export const postSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
-      state.posts = state.posts.concat(action.payload);
+      state.posts = action.payload.results;
+      state.count = action.payload.count;
       state.loading = false;
     });
     builder.addCase(fetchPosts.pending, (state) => {
