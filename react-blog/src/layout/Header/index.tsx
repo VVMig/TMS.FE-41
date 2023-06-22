@@ -1,5 +1,5 @@
 import { NavPanel } from "../NavPanel";
-import styles from "./Header.module.scss";
+import styles from "./Header.module.css";
 
 export const Header = () => {
   return (

@@ -7,6 +7,8 @@ import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import "./styles.css";
+
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
@@ -31,12 +33,12 @@ export const Root = () => {
   }, []);
 
   return (
-    <>
+    <div className="wrapper">
       <Header />
-      <div>
+      <main className="content">
         <Outlet />
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };

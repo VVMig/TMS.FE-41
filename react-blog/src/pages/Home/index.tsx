@@ -5,13 +5,16 @@ import { CircularProgress } from "@mui/material";
 import { fetchPosts } from "../../store/actions/posts";
 import { Link } from "react-router-dom";
 import { Routes } from "../../constants/Routes";
+import "./styles.css";
+import { RootState } from "../../store";
+
 
 const Home = () => {
   const {
     posts,
     loading: isLoading,
     error,
-  } = useSelector((state: any) => state.posts);
+  } = useSelector((state: RootState) => state.posts);
 
   const dispatch = useDispatch();
 
@@ -38,7 +41,17 @@ const Home = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <div>
+        <div className="postsWrapper">
+          <div className="leftColumn">
+            {posts.slice(0, 5).map((post)=><div style={{backgroundColor: "red", width: "100%", height: 50}}/>)}
+          </div>
+          <div className="rightColumn">
+          {posts.slice(6, 11).map((post)=><div style={{backgroundColor: "blue", width: "100%", height: 50}}/>)}
+          </div>
+
+
+
+
           {posts.map((post: any) => (
             <Link to={Routes.Post.replace(":id", post.id)}>
               <Post
