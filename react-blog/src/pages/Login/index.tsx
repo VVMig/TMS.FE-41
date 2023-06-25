@@ -6,9 +6,10 @@ import { authService } from "../../services/auth";
 import * as Yup from "yup";
 import { LOCAL_STORAGE_KEYS } from "../../constants/LocalStorageKeys";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../store/actions/user";
+import { setUser } from "../../store/reducers/user";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../constants/Routes";
+import "../../style/style.css"
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -23,6 +24,7 @@ const initialValues = {
 type FormikValues = typeof initialValues;
 
 const Login = () => {
+  const theme = useSelector((state:any) => state.theme.theme);
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useSelector((store: any) => store.user);
 
@@ -56,6 +58,7 @@ const Login = () => {
     }
   };
 
+
   useEffect(() => {
     if (id) {
       return navigate(Routes.Home);
@@ -64,7 +67,7 @@ const Login = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className={theme}>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -76,12 +79,12 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             maxWidth: 400,
+            backgroundColor:"white",
           }}
         >
           <DefaultTextField label="Email" variant="outlined" name="email" />
-          <DefaultTextField
+          <DefaultTextField 
             label="Password"
-            variant="outlined"
             type="password"
             name="password"
           />

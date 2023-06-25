@@ -2,7 +2,7 @@ import { Box, Button, Drawer } from "@mui/material";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
-import { restoreUser } from "../store/actions/user";
+import { restoreUser } from "../store/reducers/user";
 import { Link } from "react-router-dom";
 import { Routes } from "../constants/Routes";
 import { ThemeSwitcher } from "./ThemeSwitcher";
@@ -14,13 +14,16 @@ export const NavPanel = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const theme = useSelector((state:any) => state.theme.theme);
+
+
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
-        <MenuIcon />
+      <Button onClick={() => setIsOpen(true)} className={theme}>
+        <MenuIcon className={theme}/>
       </Button>
-      <Drawer anchor="left" open={isOpen} onClose={() => setIsOpen(false)}>
-        <Box
+      <Drawer anchor="left" open={isOpen} onClose={() => setIsOpen(false)} >
+        <Box className={theme}
           sx={{
             width: 250,
             height: "100%",
@@ -35,7 +38,7 @@ export const NavPanel = () => {
             <ThemeSwitcher />
             {user?.id ? (
               <Button
-                variant="contained"
+                className={theme}
                 type="submit"
                 onClick={() => dispatch(restoreUser())}
                 sx={{
@@ -51,7 +54,7 @@ export const NavPanel = () => {
             ) : (
               <>
                 <Link to={Routes.Register}>
-                  <Button
+                  <Button className={theme}
                     variant="outlined"
                     sx={{
                       width: "100%",

@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
+import "../../style/style.css"
 
 const Home = () => {
   const {
@@ -11,11 +12,14 @@ const Home = () => {
     error,
   } = useSelector((state: any) => state.posts);
 
+  const theme = useSelector((state:any) => state.theme.theme);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPosts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     if(!localStorage.getItem('theme'))
+     {localStorage.setItem('theme', 'theme__light')};
   }, []);
 
   if (error) {
@@ -25,19 +29,18 @@ const Home = () => {
       </div>
     );
   }
-
   return (
-    <div
+    <div className={theme}
       style={{
         display: "flex",
         justifyContent: "center",
       }}
     >
       {isLoading ? (
-        <CircularProgress />
+        <CircularProgress/>
       ) : (
-        <div>
-          <header/>
+        <div className={theme}>
+          <header className={theme}/>
           {posts.map((post: any) => (
             <Post 
               id={post.id}

@@ -3,10 +3,19 @@ import { useEffect } from "react";
 import { LOCAL_STORAGE_KEYS } from "../constants/LocalStorageKeys";
 import { authService } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../store/actions/user";
+import { setUser } from "../store/reducers/user";
 import { NavPanel } from "./NavPanel";
 
 export const Root = () => {
+
+  const theme = useSelector((state:any) => state.theme.theme);
+
+  useEffect(() => {
+    if(!document.body.classList.contains('theme__light') && !document.body.classList.contains('theme__dark')){
+      document.body.classList.add(theme);
+    }
+  }, []);
+  
   const user = useSelector((store: any) => store.user);
 
   const dispath = useDispatch();

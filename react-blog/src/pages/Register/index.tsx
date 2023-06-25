@@ -3,7 +3,9 @@ import { Form, Formik } from "formik";
 import { DefaultTextField } from "../../components";
 import * as Yup from "yup";
 import { authService } from "../../services/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import '../../style/style.css'
 
 const RegisterSchema = Yup.object().shape({
   username: Yup.string().min(4, "Too shoort name").required("Required"),
@@ -24,6 +26,7 @@ type FormikValues = typeof initialValues;
 const Register = () => {
   const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const theme = useSelector((state:any) => state.theme.theme);
 
   const onSubmit = async (values: FormikValues) => {
     try {
@@ -43,6 +46,7 @@ const Register = () => {
     return <h1>Dear {user.username}, pls verify your email</h1>;
   }
 
+
   return (
     <div>
       <Formik
@@ -56,6 +60,8 @@ const Register = () => {
             display: "flex",
             flexDirection: "column",
             maxWidth: 400,
+            backgroundColor:'white',
+            borderRadius:14,
           }}
         >
           <DefaultTextField
