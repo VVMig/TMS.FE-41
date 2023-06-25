@@ -2,10 +2,10 @@ import { Box, Button, Drawer } from "@mui/material";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
-import { restoreUser } from "../store/reducers/user";
 import { Link } from "react-router-dom";
-import { Routes } from "../constants/Routes";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import { ThemeSwitcher } from "../ThemeSwitcher";
+import { Routes } from "../../constants/Routes";
+import { restoreUser } from "../../store/reducers/user";
 
 export const NavPanel = () => {
   const user = useSelector((store: any) => store.user);

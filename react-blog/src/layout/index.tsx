@@ -5,6 +5,7 @@ import { authService } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/reducers/user";
 import { NavPanel } from "./NavPanel";
+import { Header } from "./Header";
 
 export const Root = () => {
 
@@ -39,10 +40,7 @@ export const Root = () => {
 
   return (
     <>
-      <header>
-        <NavPanel />
-        <h1>{user && user?.username}</h1>
-      </header>
+      <Header />
       <div>
         <Outlet />
       </div>

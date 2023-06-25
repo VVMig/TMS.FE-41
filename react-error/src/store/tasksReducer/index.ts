@@ -8,16 +8,16 @@ export interface ITask {
 }
 
 export interface ITaskReducer {
-  tasks: ITask[] | null;
+  tasks: ITask[];
 }
 
-const tasksInitialState: ITaskReducer = {
-  tasks: null,
+const initialState: ITaskReducer = {
+  tasks: [],
 };
 
 export const tasskReducer = createSlice({
   name: "task",
-  tasksInitialState,
+  initialState,
   reducers: {
     addTask(state, action: PayloadAction<ITask>) {
       if (state.tasks === null) {

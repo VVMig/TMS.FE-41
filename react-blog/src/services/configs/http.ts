@@ -13,7 +13,7 @@ const noAuthCode = 401;
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
 
-  if (token) {
+  if (token && config.headers.Authorization !== null) {
     config.headers.Authorization = "Bearer " + token;
   }
 
@@ -41,6 +41,9 @@ api.interceptors.response.use(
           localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, data.access);
 
           return api(originalRequest);
+        } else {
+          localStorage.removeItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
+          localStorage.removeItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN);
         }
       }
     }
