@@ -1,3 +1,46 @@
-.header{
-  background-color: rgb(255, 186, 237);
+.header {
+  background-color: rgb(255, 207, 242);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.header__search {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+
+.header__input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgb(255, 255, 255);
+  background-image: url(../img/Group\ 58.svg);
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 8px 20px 8px 40px;
+  border: none;
+}
+
+.header__input:hover {
+  box-shadow: 0 0 10px rgb(162, 193, 255);
+}
+
+.header__input:focus {
+  box-shadow: 0 0 20px #1976d2;;
+  background-color: rgb(255, 255, 255);
+  color: #1976d2;
+  border: none;
+  outline: none;
+}
+
+.header__username {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
 }

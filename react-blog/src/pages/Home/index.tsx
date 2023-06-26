@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
+import { useAppDispatch } from "../../hooks/useAppDispatch"
 
 const Home = () => {
   const {
@@ -11,11 +12,10 @@ const Home = () => {
     error,
   } = useSelector((state: any) => state.posts);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchPosts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (error) {

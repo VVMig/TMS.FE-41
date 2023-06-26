@@ -34,10 +34,10 @@ export const Root = () => {
       <header className={style.header}>
         <NavPanel />
         <form className={style.header__search}>
-          <input class="header__search-input" id="inputSearch" type="text" name="text" class="Search..."
-            placeholder="Search"></input>
+          <input className={style.header__input} id="inputSearch" type="text" name="text" 
+            placeholder="Search..."></input>
         </form>
-        <h1>{user && user?.username}</h1>
+        <h3 className={style.header__username}>{user && user?.username}</h3>
       </header>
       <div>
         <Outlet />
