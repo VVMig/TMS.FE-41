@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import Login from "./pages/Login";
 
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       {
         path: Routes.Verify,
         element: <Verify />,
+
       },
     ],
   },
