@@ -4,24 +4,32 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../../store/reducers/theme";
+import { useTheme } from "@emotion/react";
+import themeSelector from "./theme";
+import { AppDispatch } from "../../store";
+import  Theme from "../../constants/Theme"
 
 export const ThemeSwitcher = () => {
   const dispatch = useDispatch();
-  const theme = useSelector((state:any) => state.theme.theme);
-
+  const theme = themeSelector();
+  const themeDarkFuction = () => {localStorage.setItem('theme', Theme.darkTheme);
+  dispatch(setTheme(Theme.darkTheme));
+      document.body.classList.remove(Theme.lightTheme);
+      document.body.classList.add(Theme.darkTheme);
+}
+const themeLightFuction = ()=>{
+  localStorage.setItem('theme', Theme.lightTheme);
+  dispatch(setTheme(Theme.lightTheme));
+  document.body.classList.remove(Theme.darkTheme);
+  document.body.classList.add(Theme.lightTheme);
+}
   return (
     <Box
       sx={{
         display: "flex",
       }}
     >
-      <Button  onClick={()=>{
-        localStorage.setItem('theme', 'theme__light');
-        dispatch(setTheme('theme__light'));
-        document.body.classList.remove('theme__dark');
-        document.body.classList.add('theme__light');
-        //let lightBTN = document.getElementsByClassName('lightBTN');
-  }}
+      <Button  onClick={()=>{themeLightFuction()}}
       className={theme}
         sx={{
           width: "100%",
@@ -31,11 +39,7 @@ export const ThemeSwitcher = () => {
       >
         <LightModeIcon />
       </Button >
-      <Button onClick={()=>{localStorage.setItem('theme', 'theme__dark');
-        dispatch(setTheme('theme__dark'));
-            document.body.classList.remove('theme__light');
-            document.body.classList.add('theme__dark');
-    }}
+      <Button onClick={()=>{themeDarkFuction()}}
     className={theme}
         sx={{
           width: "100%",

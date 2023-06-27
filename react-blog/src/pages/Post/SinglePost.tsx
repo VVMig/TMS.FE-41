@@ -14,6 +14,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import "../../style/style.css"
+import theme from "../../layout/ThemeSwitcher/theme";
+import themeSelector from "../../layout/ThemeSwitcher/theme";
   
    const PostPage = () => {
 
@@ -25,11 +27,11 @@ import "../../style/style.css"
     });
 
   const params = useParams();
+  const theme = themeSelector();
   
   useEffect(() => {
     axios.get(`https://studapi.teachmeskills.by/blog/posts/${params.id}/`).then((data)=> setPost(data.data));
   },[params.id]);
-  const theme = useSelector((state:any) => state.theme.theme);
   return (
       <Card sx={{ maxWidth: 2000, marginTop: 5 }} className={theme}>
         <CardHeader className={theme}

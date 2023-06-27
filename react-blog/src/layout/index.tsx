@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/reducers/user";
 import { NavPanel } from "./NavPanel";
 import { Header } from "./Header";
+import Theme from "../constants/Theme";
 
 export const Root = () => {
 
   const theme = useSelector((state:any) => state.theme.theme);
 
   useEffect(() => {
-    if(!document.body.classList.contains('theme__light') && !document.body.classList.contains('theme__dark')){
+    if(!document.body.classList.contains(Theme.lightTheme) && !document.body.classList.contains(Theme.darkTheme)){
       document.body.classList.add(theme);
     }
   }, []);

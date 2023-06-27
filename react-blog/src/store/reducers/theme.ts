@@ -1,6 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { Action, AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { POSTS_ACTION_TYPES } from "../../constants/ActionTypes";
 
-const initialState = {
+export interface ITheme  {
+    theme: string | null;
+}
+
+const initialState:ITheme = {
     theme: localStorage.getItem('theme'),
 }
 
@@ -8,7 +13,7 @@ const themeReducer = createSlice({
     name:'theme',
     initialState,
     reducers:{
-        setTheme(state,action){
+        setTheme(state,action: PayloadAction<string>){
             state.theme = action.payload;
         },
     },

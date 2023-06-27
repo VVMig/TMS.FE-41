@@ -26,7 +26,6 @@ type FormikValues = typeof initialValues;
 const Register = () => {
   const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const theme = useSelector((state:any) => state.theme.theme);
 
   const onSubmit = async (values: FormikValues) => {
     try {

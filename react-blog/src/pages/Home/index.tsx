@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
-import "../../style/style.css"
+import "../../style/style.css";
+import themeSelector from "../../layout/ThemeSwitcher/theme";
+import Theme from "../../constants/Theme";
 
 const Home = () => {
   const {
@@ -12,14 +14,13 @@ const Home = () => {
     error,
   } = useSelector((state: any) => state.posts);
 
-  const theme = useSelector((state:any) => state.theme.theme);
-
   const dispatch = useDispatch();
+  const theme = themeSelector();
 
   useEffect(() => {
     dispatch(fetchPosts());
      if(!localStorage.getItem('theme'))
-     {localStorage.setItem('theme', 'theme__light')};
+     {localStorage.setItem('theme', Theme.lightTheme)};
   }, []);
 
   if (error) {
