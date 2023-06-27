@@ -22,8 +22,6 @@ const Home = () => {
     setPage(value);
   };
 
-  console.log(page);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
