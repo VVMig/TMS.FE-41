@@ -5,6 +5,11 @@
     justify-content: space-between;
     background: #27319d;
 
+    &-dark {
+        background: rgb(47, 47, 47);
+        color: white;
+    }
+
     &__search {
         padding: 10px;
         max-width: 200px;

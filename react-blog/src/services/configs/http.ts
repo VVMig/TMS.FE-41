@@ -1,6 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { LOCAL_STORAGE_KEYS } from "../../constants/LocalStorageKeys";
 import { authService } from "../auth";
+import { toast } from "react-toastify";
 
 const api = axios.create({
   baseURL: "https://studapi.teachmeskills.by",
@@ -47,6 +48,8 @@ api.interceptors.response.use(
         }
       }
     }
+
+    toast.error(error?.response?.data?.detail ?? error?.message ?? "Error");
   }
 );
 

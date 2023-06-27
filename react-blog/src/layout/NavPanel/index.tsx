@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { restoreUser } from "../../store/actions/user";
 import { Routes } from "../../constants/Routes";
+import { NavMenu } from "./NavMenu";
 
 export const NavPanel = () => {
   const user = useSelector((store: any) => store.user);
@@ -34,7 +35,7 @@ export const NavPanel = () => {
           }}
           role="presentation"
         >
-          <div></div>
+          <NavMenu />
           <div>
             <ThemeSwitcher />
             {user?.id ? (

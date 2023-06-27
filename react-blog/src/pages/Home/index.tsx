@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Post } from "./Post";
 import { CircularProgress, Pagination } from "@mui/material";
 import { fetchPosts } from "../../store/actions/posts";
-import { Link } from "react-router-dom";
-import { Routes } from "../../constants/Routes";
 import "./styles.css";
 import { RootState } from "../../store";
 

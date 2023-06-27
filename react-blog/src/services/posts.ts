@@ -12,6 +12,14 @@ class PostsService {
       },
     });
   }
+
+  addPost(body: any) {
+    return api.post("/blog/posts/", body, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
 }
 
 // (1 - x)*12 = 0

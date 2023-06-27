@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import Login from "./pages/Login";
 import Post from "./pages/Post";
+import AddPost from "./pages/AppPost";
 
 // sass installation: npm install node-sass
 
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: Routes.Post,
         element: <Post />,
+      },
+      {
+        path: Routes.AddPost,
+        element: <AddPost />,
       },
     ],
   },
