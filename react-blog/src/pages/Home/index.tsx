@@ -1,16 +1,19 @@
 import { useEffect } from "react";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
 import { useAppDispatch } from "../../hooks/useAppDispatch"
+import { Link } from "react-router-dom";
+import { Routes } from "../../constants/Routes";
+import { RootState } from "../../store";
 
 const Home = () => {
   const {
     posts,
     loading: isLoading,
     error,
-  } = useSelector((state: any) => state.posts);
+  } = useSelector((state: RootState) => state.posts);
 
   const dispatch = useAppDispatch();
 
@@ -38,12 +41,14 @@ const Home = () => {
       ) : (
         <div>
           {posts.map((post: any) => (
-            <Post
-              key={post.id}
-              title={post.title}
-              text={post.text}
-              src={post.image}
-            />
+            <Link to={Routes.Post.replace(":id", post.id)}>
+              <Post
+                key={post.id}
+                title={post.title}
+                text={post.text}
+                src={post.image}
+              />
+            </Link>
           ))}
         </div>
       )}
