@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Post } from "./Post";
 import { CircularProgress, Pagination } from "@mui/material";
@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import { Routes } from "../../constants/Routes";
 import "./styles.css";
 import { RootState } from "../../store";
+import { context } from "../../context";
+import { Theme } from "../../constants/Theme";
+import { ThemeContext } from "../../hooks/useTheme";
 
 const Home = () => {
   const {

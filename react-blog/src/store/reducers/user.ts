@@ -1,4 +1,6 @@
 import { AnyAction } from "redux";
+import { fetchPosts } from "../actions/posts";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface IUser {
   username: string | null;
@@ -12,16 +14,18 @@ const initialState: IUser = {
   email: null,
 };
 
-const userReducer = (state = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case "SET_USER":
-      return { ...state, ...action.payload };
-    case "RESTORE_USER":
-      return initialState;
-
-    default:
+export const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    setUser: (state, action) => {
+      return {...state, ...action.payload};
+  },
+    restoreUser: (state) => {
       return state;
-  }
-};
+    },
+}
+  
+});
 
-export { userReducer };
+export const usersReducer = userSlice.reducer;
