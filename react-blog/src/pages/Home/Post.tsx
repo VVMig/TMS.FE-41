@@ -15,6 +15,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import { useState } from "react";
 
 interface IProps {
   title: string;
@@ -25,6 +26,7 @@ interface IProps {
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 export const Post = ({ title, src, text }: IProps) => {
+  const [count, setCount] = useState(0)
   return (
     <Card sx={{ maxWidth: 345, marginTop: 12 }}>
       <CardMedia component="img" height="194" image={src} alt="Paella dish" />
@@ -39,11 +41,14 @@ export const Post = ({ title, src, text }: IProps) => {
             {...label}
             icon={<ThumbUpIcon />}
             checkedIcon={<ThumbUpIcon />}
+            onClick={() => setCount((count) => count + 1)}
           />
+          {count}
           <Checkbox
             {...label}
             icon={<ThumbDownAltIcon />}
             checkedIcon={<ThumbDownAltIcon />}
+            onClick={() => setCount((count) => count - 1 < 0 ? count : count - 1)}
           />
         </div>
         <div>
