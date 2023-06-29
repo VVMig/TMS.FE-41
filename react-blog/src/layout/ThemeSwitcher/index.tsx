@@ -12,12 +12,12 @@ import  Theme from "../../constants/Theme"
 export const ThemeSwitcher = () => {
   const dispatch = useDispatch();
   const theme = themeSelector();
-  const themeDarkFuction = () => {localStorage.setItem('theme', Theme.darkTheme);
+  const onClickThemeDark = () => {localStorage.setItem('theme', Theme.darkTheme);
   dispatch(setTheme(Theme.darkTheme));
       document.body.classList.remove(Theme.lightTheme);
       document.body.classList.add(Theme.darkTheme);
 }
-const themeLightFuction = ()=>{
+const onClickThemeLight = ()=>{
   localStorage.setItem('theme', Theme.lightTheme);
   dispatch(setTheme(Theme.lightTheme));
   document.body.classList.remove(Theme.darkTheme);
@@ -29,7 +29,7 @@ const themeLightFuction = ()=>{
         display: "flex",
       }}
     >
-      <Button  onClick={()=>{themeLightFuction()}}
+      <Button  onClick={()=>{onClickThemeLight()}}
       className={theme}
         sx={{
           width: "100%",
@@ -39,7 +39,7 @@ const themeLightFuction = ()=>{
       >
         <LightModeIcon />
       </Button >
-      <Button onClick={()=>{themeDarkFuction()}}
+      <Button onClick={()=>{onClickThemeDark()}}
     className={theme}
         sx={{
           width: "100%",

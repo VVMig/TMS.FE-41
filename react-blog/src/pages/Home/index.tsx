@@ -4,7 +4,7 @@ import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
 import "../../style/style.css";
-import themeSelector from "../../layout/ThemeSwitcher/theme";
+import useTheme from "../../layout/ThemeSwitcher/theme";
 import Theme from "../../constants/Theme";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
   } = useSelector((state: any) => state.posts);
 
   const dispatch = useDispatch();
-  const theme = themeSelector();
+  const theme = useTheme();
 
   useEffect(() => {
     dispatch(fetchPosts());

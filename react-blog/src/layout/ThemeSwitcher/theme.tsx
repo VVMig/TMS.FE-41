@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-const themeSelector = () => {
+const useTheme = () => {
 const theme = useSelector((state:any) => state.theme.theme);
 return theme;
 }
 
-export default themeSelector;
+export default useTheme;

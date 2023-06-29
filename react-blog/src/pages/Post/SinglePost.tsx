@@ -12,10 +12,8 @@ import {
 import { ArrowBack } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import "../../style/style.css"
-import theme from "../../layout/ThemeSwitcher/theme";
-import themeSelector from "../../layout/ThemeSwitcher/theme";
+import useTheme from "../../layout/ThemeSwitcher/theme";
   
    const PostPage = () => {
 
@@ -27,7 +25,7 @@ import themeSelector from "../../layout/ThemeSwitcher/theme";
     });
 
   const params = useParams();
-  const theme = themeSelector();
+  const theme = useTheme();
   
   useEffect(() => {
     axios.get(`https://studapi.teachmeskills.by/blog/posts/${params.id}/`).then((data)=> setPost(data.data));

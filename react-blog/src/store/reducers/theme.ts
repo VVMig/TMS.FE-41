@@ -13,7 +13,7 @@ const themeReducer = createSlice({
     name:'theme',
     initialState,
     reducers:{
-        setTheme(state,action: PayloadAction<string>){
+        setTheme(state,action: PayloadAction<any>){
             state.theme = action.payload;
         },
     },

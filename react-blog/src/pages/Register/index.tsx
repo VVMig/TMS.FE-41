@@ -4,7 +4,6 @@ import { DefaultTextField } from "../../components";
 import * as Yup from "yup";
 import { authService } from "../../services/auth";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import '../../style/style.css'
 
 const RegisterSchema = Yup.object().shape({

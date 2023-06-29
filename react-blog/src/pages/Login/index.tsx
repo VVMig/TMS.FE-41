@@ -10,8 +10,7 @@ import { setUser } from "../../store/reducers/user";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../../constants/Routes";
 import "../../style/style.css"
-import theme from "../../layout/ThemeSwitcher/theme";
-import themeSelector from "../../layout/ThemeSwitcher/theme";
+import useTheme from "../../layout/ThemeSwitcher/theme";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -28,7 +27,7 @@ type FormikValues = typeof initialValues;
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useSelector((store: any) => store.user);
-  const theme = themeSelector();
+  const theme = useTheme();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
