@@ -311,5 +311,118 @@ npm install -D prettier
 }
 ```
 
+17. Add scss and css modules
+```
+npm i sass-loader sass
+```
+
+18. Modify **webpack.config.js**
+```
+const path = require("path");
+
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const port = process.env.PORT ?? 8080;
+
+module.exports = {
+  mode: "development",
+
+  entry: path.join(__dirname, "src", "index.tsx"),
+
+  devtool: "inline-source-map",
+
+  output: {
+    path: path.join(__dirname, "/dist"),
+
+    filename: "[name].[fullhash].js",
+
+    clean: true,
+  },
+
+  devtool: "inline-source-map",
+
+  devServer: {
+    host: "localhost",
+
+    port: port,
+
+    historyApiFallback: true,
+
+    open: true,
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+
+        exclude: /node_modules/,
+
+        loader: "babel-loader",
+      },
+
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+
+        type: "asset/resource",
+      },
+
+      {
+        test: /\.tsx?$/,
+
+        use: "ts-loader",
+
+        exclude: /node_modules/,
+      },
+
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+    ],
+  },
+
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+
+      publicPath: "/",
+    }),
+  ],
+};
+```
+
+19. Add @types/global.d.ts into src/
+```
+declare module "*.scss" {
+  const content: { [className: string]: string };
+
+  export default content;
+}
+
+declare module "*.css" {
+  const content: { [className: string]: string };
+
+  export default content;
+}
+```
+
+
 
 
