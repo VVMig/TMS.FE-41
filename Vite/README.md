@@ -1,4 +1,4 @@
-# React/Typescript webpack config
+# React/Typescript vite config
 
 ## Steps
 
