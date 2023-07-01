@@ -1,9 +1,19 @@
-import { api } from "./configs/http";
+// import { api } from "./configs/http";
+import axios from "axios";
 
 class PostsService {
   getAll() {
-    return api.get("/blog/posts/");
+    return axios.get("https://studapi.teachmeskills.by/blog/posts/?limit=100");
+  }
+
+  getId() {
+    return axios.get("https://studapi.teachmeskills.by/blog/posts/100/")
   }
 }
 
 export const postsService = new PostsService();
+
+
+
+
+

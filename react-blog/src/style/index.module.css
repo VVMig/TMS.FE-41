@@ -1,0 +1,45 @@
+.header {
+  background-color: rgb(154, 152, 228);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.header__search {
+  position: relative;
+  max-width: 650px;
+  width: 100%;
+}
+
+.header__input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 7px;
+  font-size: 18px;
+  background-color: rgb(52, 60, 205);
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 9px 25px 9px 45px;
+  border: none;
+}
+
+.header__input:hover {
+  box-shadow: 0 0 15px rgb(118, 128, 148);
+}
+
+.header__input:focus {
+  box-shadow: 0 0 20px #98b6d4;;
+  background-color: rgb(241, 223, 223);
+  color: #12477d;
+  border: none;
+  outline: none;
+}
+
+.header__username {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+}
