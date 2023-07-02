@@ -6,7 +6,10 @@ import { Theme } from "../../constants/Theme";
 import { ThemeContext, useTheme } from "../../hooks/useTheme";
 
 export const ThemeSwitcher = () => {
-  const { onChangeTheme, theme} = useContext<any>(ThemeContext)
+  const { onChangeTheme, theme} = useContext<any>(ThemeContext);
+
+  console.log(theme);
+  
 
 
   return (

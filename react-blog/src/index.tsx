@@ -11,6 +11,8 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import Login from "./pages/Login";
 import Post from "./pages/Post";
+import { ThemeProvider, useTheme } from "./hooks/useTheme";
+import { Theme } from "./constants/Theme";
 
 // sass installation: npm install node-sass
 
@@ -47,8 +49,19 @@ const router = createBrowserRouter([
   },
 ]);
 
+const SomeComponent = () => {
+  const themeValues = useTheme();
+  return (
+    <Provider store={store}>
+      {/* <ThemeProvider
+        value={themeValues}
+      > */}
+        <RouterProvider router={router} />
+      {/* </ThemeProvider> */}
+    </Provider>
+  );
+};
+
 root.render(
-  <Provider store={store}>
-      <RouterProvider router={router} />
-  </Provider>
+  <SomeComponent />
 );

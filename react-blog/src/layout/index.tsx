@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { LOCAL_STORAGE_KEYS } from "../constants/LocalStorageKeys";
 import { authService } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,9 @@ import { Theme } from "../constants/Theme";
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
 
-  const themeValues = useTheme();
+  // const themeValues = useContext<any>(ThemeContext)
+
+  const themeValues = useTheme()
 
   const dispath = useDispatch();
 
@@ -36,6 +38,8 @@ export const Root = () => {
   }, []);
 
   const darkClass = themeValues.theme === Theme.dark ? 'wrapper-dark' : ''
+  console.log(darkClass);
+  
 
   return (
     <ThemeProvider value={themeValues}>
@@ -46,6 +50,6 @@ export const Root = () => {
         </main>
         <Footer />
       </div>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 };
