@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
 import style from "./style/index.module.css";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
@@ -24,13 +25,20 @@ export const Root = () => {
     }
   };
 
+    const muiTheme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
+
   useEffect(() => {
     authUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={muiTheme}>
       <header className={style.header}>
         <NavPanel />
         <form className={style.header__search}>
@@ -42,6 +50,6 @@ export const Root = () => {
       <div>
         <Outlet />
       </div>
-    </>
+    </ThemeProvider>
   );
 };

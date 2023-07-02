@@ -1,4 +1,4 @@
-import { AnyAction } from "redux";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface IUser {
   username: string | null;
@@ -6,22 +6,26 @@ export interface IUser {
   email: string | null;
 }
 
-const initialState: IUser = {
+const userDefaultState: IUser = {
   username: null,
   id: null,
   email: null,
 };
 
-const userReducer = (state = initialState, action: AnyAction) => {
-  switch (action.type) {
-    case "SET_USER":
-      return { ...state, ...action.payload };
-    case "RESTORE_USER":
-      return initialState;
+export const userSlice = createSlice({
+  name: 'username',
+  initialState: userDefaultState,
 
-    default:
-      return state;
-  }
-};
+  reducers: {
+    setUser: (state, action) => {
+      state.username = action.payload
+    },
+    restoreUsers: (state) => {
+      state = userDefaultState
+    },
+  },
+})
 
-export { userReducer };
+export const userReducer = userSlice.reducer
+
+
