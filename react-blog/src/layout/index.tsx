@@ -6,7 +6,7 @@ import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
 import { Link,Outlet } from "react-router-dom";
 import { Routes } from "../constants/Routes";
-import style from "./style/Layout.module.css";
+import style from "./style/layout.module.css";
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
