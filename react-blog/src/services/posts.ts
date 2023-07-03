@@ -1,19 +1,12 @@
-// import { api } from "./configs/http";
-import axios from "axios";
-
+import { api } from "./configs/http";
 class PostsService {
   getAll() {
-    return axios.get("https://studapi.teachmeskills.by/blog/posts/?limit=100");
+    const data = api.get("/blog/posts/",{
+      params:{
+        limit: 15
+      },
+    });
+      return data
+    }
   }
-
-  getId() {
-    return axios.get("https://studapi.teachmeskills.by/blog/posts/100/")
-  }
-}
-
-export const postsService = new PostsService();
-
-
-
-
-
+  export const postsService = new PostsService();

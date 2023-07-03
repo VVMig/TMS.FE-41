@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import Login from "./pages/Login";
 import Post from "./pages/Post";
+import PostPage from "./pages/Post/SinglePost";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: Routes.Post,
-        element: <Post />,
+        element: <PostPage />,
       },
     ],
   },

@@ -3,7 +3,7 @@ import "./App.css";
 import { useSelector } from "react-redux";
 import { fetchPosts } from "./store/actions/posts";
 import "./style/style.css";
-import { useAppDispatch } from "./useDispatch";
+import { useAppDispatch } from "./hooks/useDispatch";
 
 const App = () => {
   const {
