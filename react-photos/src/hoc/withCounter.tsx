@@ -12,6 +12,7 @@ export function withCounter<OriginalProps>(
     const [time, setTime] = useState(new Date().toLocaleTimeString());
     const [isPause, setIsPause] = useState(false);
 
+
     const onPausePlay = () => {
       if (counterRef.current) {
         clearInterval(counterRef.current as NodeJS.Timer);

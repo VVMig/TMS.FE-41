@@ -43,6 +43,7 @@ const Home = () => {
         flexDirection: "column",
         alignItems: "center",
       }}
+     
     >
       {isLoading ? (
         <CircularProgress />

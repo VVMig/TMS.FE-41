@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { LOCAL_STORAGE_KEYS } from "../constants/LocalStorageKeys";
 import { authService } from "../services/auth";
 import { useDispatch } from "react-redux";
@@ -8,14 +8,14 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import "./styles.scss";
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material";
-import { ThemeProvider, useTheme } from "../hooks/useTheme";
+import { ThemeContext, ThemeProvider, useTheme } from "../hooks/useTheme";
 import clsx from "clsx";
 import { Theme } from "../constants/Theme";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const Root = () => {
-  const themeValues = useTheme();
+  const { theme } = useContext<any>(ThemeContext);
 
   const dispath = useDispatch();
 
@@ -33,7 +33,7 @@ export const Root = () => {
 
   const muiTheme = createTheme({
     palette: {
-      mode: themeValues.theme,
+      mode: theme,
     },
   });
 
@@ -44,20 +44,18 @@ export const Root = () => {
 
   return (
     <MuiThemeProvider theme={muiTheme}>
-      <ThemeProvider value={themeValues}>
-        <ToastContainer theme={themeValues.theme} />
-        <div
-          className={clsx("wrapper", {
-            "wrapper-dark": themeValues.theme === Theme.dark,
-          })}
-        >
-          <Header />
-          <main className="content">
-            <Outlet />
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
+      <ToastContainer theme={theme} />
+      <div
+        className={clsx("wrapper", {
+          "wrapper-dark": theme === Theme.dark,
+        })}
+      >
+        <Header />
+        <main className="content">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </MuiThemeProvider>
   );
 };

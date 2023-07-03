@@ -12,6 +12,7 @@ import Verify from "./pages/Verify";
 import Login from "./pages/Login";
 import Post from "./pages/Post";
 import AddPost from "./pages/AppPost";
+import { ThemeProvider, useTheme } from "./hooks/useTheme";
 
 // sass installation: npm install node-sass
 
@@ -52,8 +53,25 @@ const router = createBrowserRouter([
   },
 ]);
 
-root.render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
-);
+const Base = () => {
+  const themeValues = useTheme();
+
+  console.log("123");
+
+  return (
+    <Provider store={store}>
+      <ThemeProvider value={themeValues}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </Provider>
+  );
+};
+
+root.render(<Base />);
+
+// ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+//   <React.StrictMode>
+//     {/* <App /> */}
+//     <h1>Hello world</h1>
+//   </React.StrictMode>,
+// )
