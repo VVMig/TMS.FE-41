@@ -27,20 +27,8 @@ import {
   const params = useParams();
 
   useEffect(() => {
-    postService.getOne(params.id)
-    .then(response => {
-      const data = response.data;
-      setPost({
-        title: data.title,
-        image: data.image,
-        text: data.text,
-        id: data.id,
-      });
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}, [params.id]);
+    postService.getOne(params.id as string);
+  }, [params.id]);
 
   return (
       <Card sx={{ maxWidth: 2000, marginTop: 5 }}>
@@ -69,3 +57,4 @@ import {
     );
   };
   export default PostPage;
+  
