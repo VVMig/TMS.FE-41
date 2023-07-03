@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../store/actions/posts";
 import { Post } from "./Post";
 import { CircularProgress } from "@mui/material";
+import { useAppDispatch } from "../../hooks/useDispatch";
 // import { useAppDispatch } from "../../hooks/useAppDistach";
 // import { Link } from "react-router-dom";
 // import { Routes } from "../../constants/Routes";
@@ -16,7 +17,7 @@ const Home = () => {
     error,
   } = useSelector((state: any) => state.posts);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchPosts());

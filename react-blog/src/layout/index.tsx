@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { LOCAL_STORAGE_KEYS } from "../constants/LocalStorageKeys";
 import { authService } from "../services/auth";
@@ -7,7 +6,7 @@ import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
 import { Link,Outlet } from "react-router-dom";
 import { Routes } from "../constants/Routes";
-import style from "./style/index.module.css";
+import style from "./style/Layout.module.css";
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);

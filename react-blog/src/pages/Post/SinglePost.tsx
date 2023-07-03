@@ -9,9 +9,11 @@ import {
   } from "@mui/material";
   import { red } from "@mui/material/colors";
   import { Link, useParams } from "react-router-dom";
-import { ArrowBack } from "@mui/icons-material";
-import { useEffect, useState } from "react";
-import axios from "axios";
+  import { ArrowBack } from "@mui/icons-material";
+  import { useEffect, useState } from "react";
+  import axios from "axios";
+  import { postService } from "../../services/post";
+
 
    const PostPage = () => {
 
@@ -25,8 +27,20 @@ import axios from "axios";
   const params = useParams();
 
   useEffect(() => {
-    axios.get(`https://studapi.teachmeskills.by/blog/posts/${params.id}/`).then((data)=> setPost(data.data));
-  },[params.id]);
+    postService.getOne(params.id)
+    .then(response => {
+      const data = response.data;
+      setPost({
+        title: data.title,
+        image: data.image,
+        text: data.text,
+        id: data.id,
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}, [params.id]);
 
   return (
       <Card sx={{ maxWidth: 2000, marginTop: 5 }}>
