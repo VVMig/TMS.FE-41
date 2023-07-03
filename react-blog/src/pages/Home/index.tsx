@@ -60,7 +60,7 @@ const Home = () => {
               ))}
             </div>
             <div className="rightColumn">
-              {posts.slice(6, 11).map((post: any) => (
+              {posts.slice(6, 12).map((post: any) => (
                 <Post
                   key={post.id}
                   title={post.title}
