@@ -34,8 +34,13 @@ export const Root = () => {
       <header className={style.header}>
         <NavPanel />
         <form className={style.header__search}>
-          <input className={style.header__input} id="inputSearch" type="text" name="text" 
-            placeholder="Search..."></input>
+          <input
+            className={style.header__input}
+            id="inputSearch"
+            type="text"
+            name="text"
+            placeholder="Search..."
+          />
         </form>
         <h3 className={style.header__username}>{user && user?.username}</h3>
       </header>
