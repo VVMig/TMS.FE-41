@@ -4,9 +4,9 @@ import { authService } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
-import { Link,Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Routes } from "../constants/Routes";
-import style from "./style/layout.module.css";
+import style from "../style/Layout.module.css";
 
 export const Root = () => {
   const user = useSelector((store: any) => store.user);
@@ -33,15 +33,20 @@ export const Root = () => {
   return (
     <>
       <header className={style.header}>
-      <NavPanel />
-      {/* <div>
+        <NavPanel />
+        {/* <div>
         <Link to={Routes.Register} className="register">Register</Link>
         </div>
         <div> */}
-          <form className={style.header__search}>
-            <input className={style.header__input} id="inputSearch" type="text" name="text" 
-            placeholder="Search..."></input>
-            </form>
+        <form className={style.header__search}>
+          <input
+            className={style.header__input}
+            id="inputSearch"
+            type="text"
+            name="text"
+            placeholder="Search..."
+          ></input>
+        </form>
         <h3 className={style.header__username}>{user && user?.username}</h3>
       </header>
       <div>
