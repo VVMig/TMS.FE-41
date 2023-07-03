@@ -1,0 +1,20 @@
+.footer {
+  background-color: rgb(255, 207, 242);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  color: white;
+
+  &-dark {
+    background-color: rgb(108, 64, 96);
+  }
+
+  &__username {
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

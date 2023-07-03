@@ -1,10 +1,23 @@
-import { ThemeProvider } from "@mui/material"
-import {createContext, useContext} from "react"
-import { Theme } from "../constants/theme" 
+import { createContext, useContext, useState, useCallback } from "react";
+import { Theme } from "../constants/Theme";
 
-const themeContext = createContext<Theme>(Theme.light)
+export const ThemeContext = createContext<{
+  changeTheme: (newTheme: Theme) => (...args: any[]) => void;
+  theme: Theme;
+} | null>(null);
+
+export const ThemeProvider = ThemeContext.Provider;
 
 export const useTheme = () => {
-   const theme = useContext(themeContext)
-   return ThemeProvider
-}
+  const [theme, setTheme] = useState(Theme.light);
+
+  const changeTheme = useCallback(
+    (newTheme: Theme) =>
+      (...args: any[]) => {
+        setTheme(newTheme);
+      },
+    []
+  );
+
+  return { theme, changeTheme };
+};

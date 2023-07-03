@@ -1,16 +1,19 @@
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import { useContext } from "react";
 import { LOCAL_STORAGE_KEYS } from "../constants/LocalStorageKeys";
 import { authService } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/actions/user";
-import { NavPanel } from "./NavPanel";
-import style from "./style/index.module.css";
-import { ThemeProvider, createTheme } from "@mui/material";
+import "./style.scss";
+import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, useTheme } from "../hooks/useTheme";
+import { Theme } from "../constants/Theme";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+import clsx from "clsx";
 
 export const Root = () => {
-  const user = useSelector((store: any) => store.user);
-
   const dispath = useDispatch();
 
   const authUser = async () => {
@@ -25,12 +28,13 @@ export const Root = () => {
     }
   };
 
-    const muiTheme = createTheme({
+  const themeValue = useTheme();
+
+  const muiTheme = createTheme({
     palette: {
-      mode: "dark",
+      mode: themeValue.theme,
     },
   });
-
 
   useEffect(() => {
     authUser();
@@ -38,18 +42,20 @@ export const Root = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={muiTheme}>
-      <header className={style.header}>
-        <NavPanel />
-        <form className={style.header__search}>
-          <input className={style.header__input} id="inputSearch" type="text" name="text" 
-            placeholder="Search..."></input>
-        </form>
-        <h3 className={style.header__username}>{user && user?.username}</h3>
-      </header>
-      <div>
-        <Outlet />
-      </div>
-    </ThemeProvider>
+    <MuiThemeProvider theme={muiTheme}>
+      <ThemeProvider value={themeValue}>
+        <div
+          className={clsx("wrapper", {
+            "wrapper-dark": themeValue.theme === Theme.dark,
+          })}
+        >
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
+    </MuiThemeProvider>
   );
 };

@@ -1,0 +1,50 @@
+.header {
+  background-color: rgb(255, 207, 242);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+
+  &-dark {
+    background-color: rgb(108, 64, 96);
+  }
+
+  &__search {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    //  background-image: url(../img/Group\ 58.svg);
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    border: none;
+  }
+
+  &__input:hover {
+    box-shadow: 0 0 10px rgb(162, 193, 255);
+  }
+
+  &__input:focus {
+    box-shadow: 0 0 20px #1976d2;
+    background-color: rgb(255, 255, 255);
+    color: #1976d2;
+    border: none;
+    outline: none;
+  }
+
+  &__username {
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
