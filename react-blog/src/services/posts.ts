@@ -1,22 +1,24 @@
 import { api } from "./configs/http";
 
 class PostsService {
-  getAll(page: number) {
+  getAll(page: number, search?: string, signal?: AbortSignal) {
     return api.get("/blog/posts/", {
       params: {
         limit: 12,
         offset: (page - 1) * 12,
+        search,
       },
       headers: {
         Authorization: null,
       },
+      signal,
     });
   }
 
   searchPost(search: string) {
     return api.get("/blog/posts/", {
-      params: { search},
-    })
+      params: { search },
+    });
   }
 
   addPost(body: any) {
