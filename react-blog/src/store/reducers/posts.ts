@@ -3,17 +3,17 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { fetchPosts } from "../actions/posts";
 
-// const initialState = {
-//   posts: [],
-//   loading: false,
-//   error: "",
-// };
+const initialState = {
+  posts: [],
+  loading: false,
+  error: "",
+};
 
- const postsDefaultState  = {
-   posts: [],
-   loading: false,
-   error: "",
- };
+//  const postsDefaultState  = {
+//    posts: [],
+//    loading: false,
+//    error: "",
+//  };
 
 // const postsReducer = (state = initialState, action: AnyAction) => {
 //   switch (action.type) {
@@ -30,9 +30,9 @@ import { fetchPosts } from "../actions/posts";
 
 // export { postsReducer };
 
-export const postsSlice = createSlice({
+const postsReducer = createSlice({
   name: 'posts',
-  initialState: postsDefaultState,
+  initialState,
   reducers: {},
   extraReducers(builder){ 
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
@@ -47,5 +47,4 @@ export const postsSlice = createSlice({
     });
   },
 });
-export const postsReducer = postsSlice.reducer
-
+export default postsReducer.reducer;

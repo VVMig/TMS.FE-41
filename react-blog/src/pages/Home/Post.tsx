@@ -9,14 +9,17 @@ import {
 } from "@mui/material";
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Link } from "react-router-dom";
+import { Routes } from "../../constants/Routes";
 
 interface IProps {
+  id: string;
   title: string;
   src: string;
   text: string;
 }
 
-export const Post = ({ title, src, text }: IProps) => {
+export const Post = ({ id, title, src, text }: IProps) => {
   return (
     <Card sx={{ maxWidth: 345, marginTop: 12 }}>
       <CardHeader
@@ -26,9 +29,11 @@ export const Post = ({ title, src, text }: IProps) => {
           </Avatar>
         }
         action={
+          <Link to={Routes.Post.replace(':id',id)}>
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
+          </Link>
         }
         title={title}
       />
@@ -41,3 +46,4 @@ export const Post = ({ title, src, text }: IProps) => {
     </Card>
   );
 };
+
