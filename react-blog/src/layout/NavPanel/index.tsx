@@ -17,14 +17,19 @@ export const NavPanel = () => {
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>
+      <Button onClick={() => setIsOpen(true)} data-testid="menu-btn">
         <MenuIcon
           sx={{
             color: "#ffffff",
           }}
         />
       </Button>
-      <Drawer anchor="left" open={isOpen} onClose={() => setIsOpen(false)}>
+      <Drawer
+        anchor="left"
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        data-testid="side-menu"
+      >
         <Box
           sx={{
             width: 250,
@@ -38,7 +43,7 @@ export const NavPanel = () => {
           <NavMenu />
           <div>
             <ThemeSwitcher />
-            {user?.id ? (
+            {true ? (
               <Button
                 variant="contained"
                 type="submit"
