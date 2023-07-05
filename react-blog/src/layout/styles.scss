@@ -1,0 +1,12 @@
+.wrapper{
+    min-height:100vh;
+    display: flex; 
+    flex-direction: column;
+
+    &-dark {
+        background-color: #000;
+    }
+}
+.content{
+    flex: 1 1 auto;
+}
