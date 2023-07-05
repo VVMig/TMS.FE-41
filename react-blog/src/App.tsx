@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { fetchPosts } from "./store/actions/posts";
 import { useAppDispatch } from "./hooks/useDispatch";
 import "layout/.Header/header.css";
-import Header from "./layout/Header";
+import {Header} from "./layout/Header";
 
 const App = () => {
   const {

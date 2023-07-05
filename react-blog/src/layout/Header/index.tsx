@@ -1,9 +1,18 @@
 import React from "react";
 import "./header.css";
+import { useContext } from "react";
+import { ThemeContext } from "../../hooks/useTheme";
+import { Theme } from "../../constants/Theme";
+import { clsx } from "clsx";
 
-const Header = () => {
+export const Header = () => {
+  const { theme } = useContext<any>(ThemeContext);
   return (
-    <header className="header">
+    <header 
+    className={clsx("header", {
+      "header-dark": theme === Theme.dark,
+    })}
+    >
       <h2 className="header__h2">React blog</h2>
       <form className="header__form">
         <input type="text" className="header__searchInput" placeholder="search" />
@@ -31,5 +40,4 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;
+// export default Header;

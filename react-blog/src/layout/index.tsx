@@ -6,7 +6,7 @@ import { setUser } from "../store/actions/user";
 import { NavPanel } from "./NavPanel";
 import { Link, Outlet } from "react-router-dom";
 import { Routes } from "../constants/Routes";
-import  Header from "./Header";
+import { Header } from "./Header";
 import style from "../style/Layout.module.css";
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material";
 import { ThemeContext, ThemeProvider, useTheme } from "../hooks/useTheme";
@@ -52,7 +52,6 @@ export const Root = () => {
           "wrapper-dark": theme === Theme.dark,
         })}
       > 
-      </div>
       <header className={style.header}>
         <NavPanel />
         {/* <div>
@@ -66,13 +65,13 @@ export const Root = () => {
             type="text"
             name="text"
             placeholder="Search...">
-
             </input>
         </form>
         <h3 className={style.header__username}>{user && user?.username}</h3>
       </header>
       <div>
         <Outlet />
+      </div>
       </div>
       </MuiThemeProvider>
     // </>
