@@ -32,9 +32,11 @@ export const Root = () => {
     }
   };
 
+  const themeValue = useTheme();
+
   const muiTheme = createTheme({
     palette: {
-      mode: theme,
+      mode: themeValue.theme,
     },
   });
 
@@ -44,12 +46,11 @@ export const Root = () => {
   }, []);
 
   return (
-    // <>
     <MuiThemeProvider theme={muiTheme}>
-       <ToastContainer theme={theme} />
+       <ThemeProvider value={themeValue}>
        <div
         className={clsx("wrapper", {
-          "wrapper-dark": theme === Theme.dark,
+          "wrapper-dark": themeValue.theme === Theme.dark,
         })}
       > 
       <header className={style.header}>
@@ -73,7 +74,7 @@ export const Root = () => {
         <Outlet />
       </div>
       </div>
+      </ThemeProvider>
       </MuiThemeProvider>
-    // </>
   );
 };

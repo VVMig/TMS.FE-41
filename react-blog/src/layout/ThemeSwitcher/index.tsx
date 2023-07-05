@@ -4,6 +4,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { ThemeContext } from "../../hooks/useTheme";
 import { Theme } from "../../constants/Theme";
 import { useContext } from "react";
+import { useTheme } from "../../hooks/useTheme";
 
 export const ThemeSwitcher = () => {
   const { onChangeTheme, theme } = useContext<any>(ThemeContext);
