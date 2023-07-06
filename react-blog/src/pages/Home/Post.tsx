@@ -16,11 +16,14 @@ interface IProps {
   title: string;
   src: string;
   text: string;
+  postHeight:string;
+  maxWidth:number;
+  marginTop:number;
 }
 
-export const Post = ({id, title, src, text,}: IProps) => {
+export const Post = ({id, title, src, text, postHeight,maxWidth,marginTop}: IProps) => {
   return (
-    <Card sx={{ maxWidth: 345, marginTop: 12 }}>
+    <Card sx={{ maxWidth: maxWidth, marginTop: marginTop }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -36,7 +39,7 @@ export const Post = ({id, title, src, text,}: IProps) => {
         }
         title={title}
       />
-      <CardMedia component="img" height="194" image={src} alt="Paella dish" />
+      <CardMedia component="img" height={postHeight} image={src} alt="Paella dish" />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {text}

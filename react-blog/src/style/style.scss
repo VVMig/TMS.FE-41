@@ -10,3 +10,27 @@
         border-color: rgb(255, 255, 255);
     }
 }
+
+.posts {
+    display: flex;
+    column-gap: 50px;
+    margin-bottom: 50px;
+  
+    &__mainFirstColumn{
+        display: flex;
+        row-gap: 5px;
+        flex-direction: column;
+    }
+
+    &__mainSecondColumn{
+        display: flex;
+        row-gap: 5px;
+        flex-direction: column;
+    }
+
+    &__rightSide{
+        display: flex;
+        row-gap: -10px;
+        flex-direction: column;
+    }
+  }

@@ -7,4 +7,26 @@
   background-color: rgb(29, 28, 28);
   color: white;
   border-color: rgb(255, 255, 255);
+}
+
+.posts {
+  display: flex;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  margin-bottom: 50px;
+}
+.posts__mainFirstColumn {
+  display: flex;
+  row-gap: 5px;
+  flex-direction: column;
+}
+.posts__mainSecondColumn {
+  display: flex;
+  row-gap: 5px;
+  flex-direction: column;
+}
+.posts__rightSide {
+  display: flex;
+  row-gap: -10px;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */

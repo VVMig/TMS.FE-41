@@ -42,16 +42,51 @@ const Home = () => {
       ) : (
         <div className={theme}>
           <header className={theme}/>
-          {posts.map((post: any) => (
+        <div className="posts">
+          <div className="posts__mainFirstColumn">
+          {posts.slice(0,3).map((post: any) => (
             <Post 
               id={post.id}
               key={post.id}
               title={post.title}
               text={post.text}
               src={post.image}
+              postHeight="300px"
+              maxWidth={400}
+              marginTop={12}
             />
           ))}
+          </div>
+          <div className="posts__mainSecondColumn">
+          {posts.slice(3,6).map((post: any) => (
+            <Post 
+              id={post.id}
+              key={post.id}
+              title={post.title}
+              text={post.text}
+              src={post.image}
+              postHeight="300px"
+              maxWidth={400}
+              marginTop={12}
+            />
+          ))}
+          </div>
+          <div className="posts__rightSide">
+          {posts.slice(6,11).map((post: any) => (
+            <Post 
+              id={post.id}
+              key={post.id}
+              title={post.title}
+              text={post.text}
+              src={post.image}
+              postHeight="91px"
+              maxWidth={200}
+              marginTop={12}
+            />
+          ))}
+          </div>
         </div>
+      </div>
       )}
     </div>
   );
