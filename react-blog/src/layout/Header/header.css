@@ -18,3 +18,8 @@
   .header__h2 {
     color: aliceblue;
   }/*# sourceMappingURL=style.css.map */
+
+  .header-dark {
+    background: rgb(57, 54, 54);
+    color: rgb(124, 113, 113);
+  }

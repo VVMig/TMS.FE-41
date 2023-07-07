@@ -4,6 +4,7 @@ import { DefaultTextField } from "../../components";
 import * as Yup from "yup";
 import { authService } from "../../services/auth";
 import { useState } from "react";
+import "../../style/style.css";
 
 const RegisterSchema = Yup.object().shape({
   username: Yup.string().min(4, "Too shoort name").required("Required"),

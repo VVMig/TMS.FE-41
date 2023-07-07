@@ -1,0 +1,13 @@
+.wrapper{
+    min-height:100vh;
+    display: flex; 
+    flex-direction: column;
+    background-color: rgb(209, 219, 227);
+
+    &-dark {
+        background-color: #000;
+    }
+}
+.content{
+    flex: 1 1 auto;
+}
