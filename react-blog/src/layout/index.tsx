@@ -53,6 +53,7 @@ export const Root = () => {
           "wrapper-dark": themeValue.theme === Theme.dark,
         })}
       > 
+      <Header />
       <header className={style.header}>
         <NavPanel />
         {/* <div>
