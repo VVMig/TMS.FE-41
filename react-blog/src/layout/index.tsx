@@ -17,7 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 export const Root = () => {
-  const { theme } = useContext<any>(ThemeContext);
+  const theme = useContext(ThemeContext)
   const user = useSelector((store: any) => store.user);
   const dispath = useDispatch();
 
