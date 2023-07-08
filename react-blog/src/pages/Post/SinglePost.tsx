@@ -13,6 +13,7 @@ import {
   import { useEffect, useState } from "react";
   import axios from "axios";
   import { postService } from "../../services/post";
+  import "../../style/style.css";
 
 
    const PostPage = () => {

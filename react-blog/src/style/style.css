@@ -23,3 +23,25 @@
     background: rgb(57, 54, 54);
     color: rgb(124, 113, 113);
   }
+
+  .posts {
+    display: flex;
+    -moz-column-gap: 50px;
+         column-gap: 50px;
+    margin-bottom: 50px;
+  }
+  .posts__firstColumn {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+  }
+  .posts__secondColumn {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+  }
+  .posts__thirdColumn {
+    display: flex;
+    row-gap: -10px;
+    flex-direction: column;
+  }/*# sourceMappingURL=style.css.map */

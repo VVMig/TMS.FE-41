@@ -36,6 +36,7 @@ const postsReducer = createSlice({
   reducers: {},
   extraReducers(builder){ 
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
+      state.posts = [];
       state.posts = state.posts.concat(action.payload);
       state.loading = false;
     });
