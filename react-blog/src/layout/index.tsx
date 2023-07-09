@@ -7,8 +7,6 @@ import { NavPanel } from "./NavPanel";
 import { Link, Outlet } from "react-router-dom";
 import { Routes } from "../constants/Routes";
 import { Header } from "./Header";
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Can not import Home, where my posts are and where  should I put it in return (...)?
 import Home  from "../pages/Home/index";
 import style from "../style/Layout.module.css";
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material";
