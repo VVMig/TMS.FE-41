@@ -4,8 +4,6 @@ import axios from "axios";
 export const fetchPhotos = createAsyncThunk(
   "photos/fetch",
   async (id: number) => {
-    console.log(id);
-
     const { data } = await axios.get(
       "https://jsonplaceholder.typicode.com/photos"
     );
