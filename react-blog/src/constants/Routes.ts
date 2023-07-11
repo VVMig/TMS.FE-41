@@ -5,4 +5,5 @@ export enum Routes {
   Login = "/login",
   Verify = "/verify/:uid/:token",
   Post = "/post/:id",
+  SearchPost = "/search"
 }

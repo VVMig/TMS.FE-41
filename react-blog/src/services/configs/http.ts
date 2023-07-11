@@ -31,17 +31,24 @@ api.interceptors.response.use(
     if (error instanceof AxiosError) {
       const originalRequest = error.config as InternalAxiosRequestConfig<any>;
 
-      if (error.response?.status === noAuthCode && !isRequest) {
-        const refresh = localStorage.getItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN);
+      if (error.response?.status === noAuthCode) {
+        if (!isRequest) {
+          const refresh = localStorage.getItem(
+            LOCAL_STORAGE_KEYS.REFRESH_TOKEN
+          );
 
-        if (refresh) {
-          isRequest = true;
+          if (refresh) {
+            isRequest = true;
 
-          const { data } = await authService.refreshAccessToken(refresh);
+            const { data } = await authService.refreshAccessToken(refresh);
 
-          localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, data.access);
+            localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, data.access);
 
-          return api(originalRequest);
+            return api(originalRequest);
+          } else {
+            localStorage.removeItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
+            localStorage.removeItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN);
+          }
         } else {
           localStorage.removeItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
           localStorage.removeItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN);
@@ -49,7 +56,13 @@ api.interceptors.response.use(
       }
     }
 
-    toast.error(error?.response?.data?.detail ?? error?.message ?? "Error");
+    console.dir(error);
+
+    if (!error.__CANCEL__) {
+      toast.error(error?.response?.data?.detail ?? error?.message ?? "Error");
+    }
+
+    return Promise.reject(error);
   }
 );
 

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Provider } from "react-redux";
@@ -13,6 +12,7 @@ import Login from "./pages/Login";
 import Post from "./pages/Post";
 import AddPost from "./pages/AppPost";
 import { ThemeProvider, useTheme } from "./hooks/useTheme";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 // sass installation: npm install node-sass
 
@@ -48,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: Routes.AddPost,
         element: <AddPost />,
+      },
+      {
+        path: Routes.SearchPost,
+        element: <SearchPage />,
       },
     ],
   },
