@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./styles.css";
@@ -13,7 +13,6 @@ const Post = () => {
   });
 
   const params = useParams();
-  console.log(params);
 
   useEffect(() => {
     axios

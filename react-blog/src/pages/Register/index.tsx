@@ -1,9 +1,9 @@
-import { Button, CircularProgress } from "@mui/material";
-import { Form, Formik } from "formik";
 import { DefaultTextField } from "../../components";
 import * as Yup from "yup";
 import { authService } from "../../services/auth";
 import { useState } from "react";
+import "../common/Auth/styles.scss";
+import { Auth } from "../common";
 
 const RegisterSchema = Yup.object().shape({
   username: Yup.string().min(4, "Too shoort name").required("Required"),
@@ -44,45 +44,28 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={RegisterSchema}
-        onSubmit={onSubmit}
-      >
-        <Form
-          style={{
-            marginTop: 12,
-            display: "flex",
-            flexDirection: "column",
-            maxWidth: 400,
-          }}
-        >
-          <DefaultTextField
-            label="Username"
-            variant="outlined"
-            placeholder="Username"
-            name="username"
-          />
-          <DefaultTextField label="Email" variant="outlined" name="email" />
-          <DefaultTextField
-            label="Password"
-            variant="outlined"
-            type="password"
-            name="password"
-          />
-          <Button
-            variant="contained"
-            type="submit"
-            endIcon={
-              isLoading ? <CircularProgress color="secondary" /> : undefined
-            }
-          >
-            Register
-          </Button>
-        </Form>
-      </Formik>
-    </div>
+    <Auth
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={RegisterSchema}
+      submitButtonText="Register"
+      title="Register"
+      isLoading={isLoading}
+    >
+      <DefaultTextField label="Email" variant="outlined" name="email" />
+      <DefaultTextField
+        label="Username"
+        variant="outlined"
+        placeholder="Username"
+        name="username"
+      />
+      <DefaultTextField
+        label="Password"
+        variant="outlined"
+        type="password"
+        name="password"
+      />
+    </Auth>
   );
 };
 

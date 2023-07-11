@@ -4,12 +4,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ThemeSwitcher } from "../ThemeSwitcher";
-import { restoreUser } from "../../store/actions/user";
 import { Routes } from "../../constants/Routes";
 import { NavMenu } from "./NavMenu";
+import { RootState } from "../../store";
+import { restoreUser } from "../../store/reducers/user";
 
 export const NavPanel = () => {
-  const user = useSelector((store: any) => store.user);
+  const user = useSelector((store: RootState) => store.user);
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,7 @@ export const NavPanel = () => {
           <NavMenu />
           <div>
             <ThemeSwitcher />
-            {true ? (
+            {user.id ? (
               <Button
                 variant="contained"
                 type="submit"

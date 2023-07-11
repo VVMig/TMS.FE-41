@@ -60,8 +60,6 @@ const router = createBrowserRouter([
 const Base = () => {
   const themeValues = useTheme();
 
-  console.log("123");
-
   return (
     <Provider store={store}>
       <ThemeProvider value={themeValues}>

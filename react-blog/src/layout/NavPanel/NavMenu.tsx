@@ -44,16 +44,6 @@ export const NavMenu = () => {
 
   return (
     <div>
-      <RouteItem theme={theme}>
-        <StyledLink
-          to={"/post"}
-          theme={theme}
-          active={false}
-          data-testid="to-post-link"
-        >
-          To post
-        </StyledLink>
-      </RouteItem>
       {routes.map((route) => (
         <RouteItem key={route.label} theme={theme}>
           <StyledLink

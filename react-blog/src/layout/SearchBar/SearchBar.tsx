@@ -1,11 +1,5 @@
-import axios from "axios";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Routes } from "../../constants/Routes";
 import { postsService } from "../../services";
 import { CircularProgress } from "@mui/material";
@@ -24,24 +18,20 @@ const debounce = (callback: (...args: any) => void, ms: number) => {
 
 let abortController = new AbortController();
 
-const SearchBar = ({ postQuery, setQuery }: any) => {
-  const [search, setSearch] = useState(postQuery);
+const SearchBar = () => {
+  const [search, setSearch] = useState("");
   const [posts, setPosts] = useState<any[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const goToPage = () => navigate("/search");
+  const goToPage = () => navigate(`/search?query=${search}`);
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    const form = e.target;
 
-    const query = form.search.value;
+    goToPage();
 
-    setQuery({ query: query });
-    console.log(setQuery);
-
-    // onSearch(query);
+    setSearch("");
   };
 
   const fetchPosts = async (value: string) => {

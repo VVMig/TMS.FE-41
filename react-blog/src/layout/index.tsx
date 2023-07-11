@@ -3,16 +3,16 @@ import { useContext, useEffect } from "react";
 import { LOCAL_STORAGE_KEYS } from "../constants/LocalStorageKeys";
 import { authService } from "../services/auth";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/actions/user";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import "./styles.scss";
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material";
-import { ThemeContext, ThemeProvider, useTheme } from "../hooks/useTheme";
+import { ThemeContext } from "../hooks/useTheme";
 import clsx from "clsx";
 import { Theme } from "../constants/Theme";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setUser } from "../store/reducers/user";
 
 export const Root = () => {
   const { theme } = useContext<any>(ThemeContext);

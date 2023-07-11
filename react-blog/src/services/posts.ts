@@ -15,12 +15,6 @@ class PostsService {
     });
   }
 
-  searchPost(search: string) {
-    return api.get("/blog/posts/", {
-      params: { search },
-    });
-  }
-
   addPost(body: any) {
     return api.post("/blog/posts/", body, {
       headers: {

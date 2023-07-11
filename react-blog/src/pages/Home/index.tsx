@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Post } from "./Post";
+import { Post } from "../common";
 import { CircularProgress, Pagination } from "@mui/material";
 import { fetchPosts } from "../../store/actions/posts";
-import "./styles.css";
+import "./styles.scss";
 import { RootState } from "../../store";
+import { Link } from "react-router-dom";
+import { Routes } from "../../constants/Routes";
 
 const Home = () => {
   const {
@@ -16,7 +18,7 @@ const Home = () => {
 
   const [page, setPage] = useState(1);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
@@ -43,7 +45,6 @@ const Home = () => {
         flexDirection: "column",
         alignItems: "center",
       }}
-     
     >
       {isLoading ? (
         <CircularProgress />
@@ -52,40 +53,47 @@ const Home = () => {
           <div className="postsWrapper">
             <div className="leftColumn">
               {posts.slice(0, 6).map((post: any) => (
-                <Post
-                  key={post.id}
-                  title={post.title}
-                  text={post.text}
-                  src={post.image}
-                />
+                <Link
+                  to={Routes.Post.replace(":id", post.id)}
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <Post
+                    key={post.id}
+                    title={post.title}
+                    text={post.text}
+                    src={post.image}
+                  />
+                </Link>
               ))}
             </div>
             <div className="rightColumn">
-              {posts.slice(6, 11).map((post: any) => (
-                <Post
-                  key={post.id}
-                  title={post.title}
-                  text={post.text}
-                  src={post.image}
-                />
+              {posts.slice(5, 11).map((post: any) => (
+                <Link
+                  to={Routes.Post.replace(":id", post.id)}
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <Post
+                    key={post.id}
+                    title={post.title}
+                    text={post.text}
+                    src={post.image}
+                    size="small"
+                  />
+                </Link>
               ))}
             </div>
-
-            {/* {posts.map((post: any) => (
-            <Link to={Routes.Post.replace(":id", post.id)}>
-              <Post
-                key={post.id}
-                title={post.title}
-                text={post.text}
-                src={post.image}
-              />
-            </Link>
-          ))} */}
           </div>
           <Pagination
             count={Math.ceil((count as unknown as number) / 12)}
             page={page}
             onChange={handleChange}
+            sx={{
+              margin: 2,
+            }}
           />
         </>
       )}
